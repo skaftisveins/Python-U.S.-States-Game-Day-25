@@ -45,10 +45,11 @@ while running:
 
     def is_still_playing(guess):
         if (guess == STOP_GAME):
-            missing_states = []
-            for state in all_states:
-                if state not in guessed_states:
-                    missing_states.append(state)
+            missing_states = [state for state in all_states if state not in guessed_states]
+            # missing_states = []
+            # for state in all_states:
+            #     if state not in guessed_states:
+            # missing_states.append(state)
             learn_data = pandas.DataFrame(missing_states)
             learn_data.to_csv("States_to_learn.csv")
 
